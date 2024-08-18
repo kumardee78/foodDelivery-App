@@ -25,10 +25,6 @@ function Login() {
         data.email,
         data.password
       );
-      if (loggedInUser) {
-        localStorage.setItem("user", loggedInUser)
-        toast.success("Successfully Logedin");
-      }
       navigate("/");
     } catch (error) {
       toast.error(`${error.message}`);

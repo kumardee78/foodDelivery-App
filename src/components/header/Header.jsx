@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import HamburgerMenu from "./HamburgerMenu";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { auth } from "../../firebase";
+import { signOut } from "firebase/auth";
 
 function Header() {
-  const [isLogedIn , setIsLogedIn] = useState(false);
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    setIsLogedIn(localStorage.getItem('user'));
-  },[isLogedIn]);
-
+  const logout = () => {
+    signOut(auth)
+      .then(() => navigate("/"))
+      .catch((err) => alert(err.message));
+  };
 
   return (
     <>
@@ -53,24 +55,31 @@ function Header() {
           </li>
         </ul>
         <HamburgerMenu />
-        <ul className="flex md:text-base text-sm items-center md:gap-6 gap-1">
-          <li className="hover:scale-105">
-            <Link
-              to="/signin"
-              className="bg-red-500 hover:bg-orange-500 text-white md:py-2 py-1 md:px-2 px-1 rounded"
+        <nav className="flex md:text-base text-sm items-center md:gap-6 gap-1">
+          {auth.currentUser ? (
+            <button
+              onClick={logout}
+              className="bg-red-500 hover:bg-orange-500 text-white md:py-2 py-1 md:px-2 px-1 rounded hover:scale-105"
             >
-              Sign up
-            </Link>
-          </li>
-          <li className="hover:scale-105">
-            <Link
-              to={isLogedIn ? "/" : "/login"}
-              
-            >
-              {isLogedIn ? <button className="bg-red-500 hover:bg-orange-500 text-white md:py-2 py-1 md:px-2 px-1 rounded" onClick={() => setIsLogedIn(localStorage.removeItem("user")  && false)}>Logout</button> : <button className="bg-red-500 hover:bg-orange-500 text-white md:py-2 py-1 md:px-2 px-1 rounded">Login</button>}
-            </Link>
-          </li>
-        </ul>
+              Logout
+            </button>
+          ) : (
+            <>
+              <Link
+                to="/signin"
+                className="bg-red-500 hover:bg-orange-500 text-white md:py-2 py-1 md:px-2 px-1 rounded hover:scale-105"
+              >
+                Sign up
+              </Link>
+              <Link
+                to="/login"
+                className="bg-red-500 hover:bg-orange-500 text-white md:py-2 py-1 md:px-2 px-1 rounded hover:scale-105"
+              >
+                Login
+              </Link>
+            </>
+          )}
+        </nav>
       </motion.header>
     </>
   );

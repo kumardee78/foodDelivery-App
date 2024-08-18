@@ -20,21 +20,20 @@ function Signup() {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       const userCredentials = await createUserWithEmailAndPassword(
         auth,
         data.email,
         data.password
       );
+      await updateProfile(userCredentials.user, {
+        displayName: data.username,
+      });
       toast.success(
         "Congratulations! You have successfully registered. Enjoy exploring our services."
       );
-      setData({
-        username: "",
-        email: "",
-        password: "",
-      });
+      navigate("/login")
+      
       console.log(userCredentials);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
@@ -43,6 +42,11 @@ function Signup() {
         toast.error(error.message);
       }
     }
+    setData({
+      username: "",
+      email: "",
+      password: "",
+    });
   }
 
   return (
