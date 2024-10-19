@@ -13,7 +13,6 @@ import { food_list } from "./foodItems";
 import { menu_list } from "./foodItems";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -31,7 +30,6 @@ function App() {
     });
   }, []);
 
-  // let location = useLocation();
   useEffect(() => {
     AOS.refresh();
   }, []);
@@ -45,10 +43,13 @@ function App() {
   }, [cart]);
 
   function hanadleAddTocart(e, foodItem) {
-    const newCart = [...cart, foodItem];
-    setCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
-    toast.success("Add item successfully");
+    const existItem = cart.find((item) => item._id === foodItem._id);
+    if (!existItem) {
+      const newCart = [...cart, foodItem];
+      setCart(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      toast.success("Added item successfully");
+    }
   }
 
   function addQuantity(index) {

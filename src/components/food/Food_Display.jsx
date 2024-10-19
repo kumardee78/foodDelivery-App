@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import { food_Delivery_contex } from "../../App";
 import "../../style.css";
 import { FaIndianRupeeSign } from "react-icons/fa6";

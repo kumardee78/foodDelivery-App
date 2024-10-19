@@ -8,7 +8,7 @@ function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="md:flex items-center block bg-red-500 my-4 py-12 lg:py-20 md:mx-10 lg:mx-12 xl:mx-16 mx-6 md:px-8 xl:px-20"
+        className="md:flex items-center block bg-red-500 my-4 py-12 lg:py-24 lg:my-20 my-10 md:mx-10 lg:mx-12 xl:mx-16 mx-6 md:px-8 xl:px-20 rounded-xl"
       >
         <div className="md:grow md:px-0 lg:pl-10 px-6 ">
           <h1 className="lg:text-5xl xl:text-7xl  sm:text-4xl text-2xl font-bold text-white font-['Mv_Boli'] ">

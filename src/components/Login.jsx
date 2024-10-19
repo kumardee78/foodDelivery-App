@@ -27,7 +27,7 @@ function Login() {
       );
       navigate("/");
     } catch (error) {
-      toast.error(`${error.message}`);
+      toast.error("Invalid input");
     }
     setData({ email: "", password: "" });
   }

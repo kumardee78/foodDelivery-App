@@ -19,20 +19,19 @@ function Header() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2 }}
-        data-aos="fade-down"
-        className="sticky z-10 top-0 flex justify-between items-center md:px-16 px-2 py-6 bg-white"
+        className="sticky z-10 top-0 flex justify-between items-center md:px-10 px-2 py-2 bg-white border-b"
       >
         <h1 className="md:text-4xl text-2xl line-through font-bold text-blue-600 font-['forte'] ">
           <Link to="/">
-            <span className="font-bold text-red-600">Food</span>Cart
+            <img src="food-delivery logo.png" alt="" className="md:w-[8rem] w-[5rem]"/>
           </Link>
         </h1>
 
-        <ul className="hidden md:flex items-center gap-4">
+        <ul className="hidden md:flex items-center gap-16">
           <li>
             <Link
               to="/"
-              className="text-[1.2rem] hover:text-[red] pb-[2px] border-b-[2px] border-white text-black"
+              className="text-2xl font-semibold hover:text-[red] pb-[2px] border-b-[2px] border-white text-black"
             >
               Home
             </Link>
@@ -40,7 +39,7 @@ function Header() {
           <li>
             <Link
               to="/review"
-              className="text-[1.2rem] hover:text-[red] pb-[2px] border-b-[2px] border-white text-black"
+              className="text-2xl font-semibold hover:text-[red] pb-[2px] border-b-[2px] border-white text-black"
             >
               Review
             </Link>
@@ -48,7 +47,7 @@ function Header() {
           <li>
             <Link
               to="/cart"
-              className="text-[1.2rem] hover:text-[red] pb-[2px] border-b-[2px] border-white text-black"
+              className="text-2xl font-semibold hover:text-[red] pb-[2px] border-b-[2px] border-white text-black"
             >
               Cart
             </Link>
